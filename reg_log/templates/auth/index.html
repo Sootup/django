@@ -1,0 +1,16 @@
+{% extends 'auth/base.html' %}
+{% block title %}
+    {{title}}
+{% endblock %}
+{% block body %}
+<h1 class="greetings">Привет, {{user.username|default:'Гость'}}</h1>
+    
+
+<div class="mainpage">
+    <a class="btn btn-primary btn-lg" href="{% url 'create' %}" role="button"> Create Article</a>
+</div>
+<div>
+    {{articles}}
+</div>
+
+{% endblock %}

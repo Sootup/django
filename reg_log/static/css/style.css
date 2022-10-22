@@ -1,0 +1,100 @@
+.registrationerror {
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    max-width: 1500px;
+    vertical-align: center;   
+}
+.greetings{
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    max-width: 800px;
+    vertical-align: center;
+
+}
+.mainpage {
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    max-width: 300px;
+    vertical-align: center;
+    
+}
+.articleforms {
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    padding: 10px;
+    margin: 10px;
+    width: 800px;
+}
+.articleform {
+    padding: 10px;
+    margin: 10px;
+    width: 800px;
+}
+
+.articlecon {
+    height: 350px;
+    text-align:left;
+}
+    
+.articlebutton {
+    padding: 5px;
+    margin: 20px;
+}
+.choicearticle {
+    width: 190px;
+    padding: 5px;
+    margin: 20px;
+}
+.articlephoto {
+    width: 280px;
+}
+.h3create {
+    margin: 10px;
+    padding: 5px;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    width: 500px;
+}
+.hki {
+    /* text-align: center;
+    vertical-align: center; */
+    margin: 10px; 
+
+}
+.regform {
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    max-width: 300px;
+    vertical-align: center;
+    
+}
+
+.regbutton {
+    text-align: center;
+    margin: 10px;
+    vertical-align: middle;
+}
+
+.loginhome {
+
+    text-align: center;
+    margin: 10px;
+    vertical-align: right;
+}
+.headcont {
+    background-color:  #D0D0E5;
+    left: -3000px;
+    right: -3000px;
+    position: absolute;
+}
+
+
+.footcont {
+    background-color:  #D0D0E5;
+    left: -3000px;
+    right: -3000px;
+    position: absolute;
+}
+

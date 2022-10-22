@@ -1,0 +1,133 @@
+{% extends 'auth/base.html' %}
+{% block title %}
+<meta name="csrf-token" content="{{ csrf_token }}">
+{{title}}
+
+
+{% endblock %}
+{% block body %}
+<div>
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+</div>
+
+
+<!-- <form method="POST" class="articleform">
+    {% csrf_token %}
+    
+    {{ form.title }}<br>
+    {{ form.content }}<br>
+    {{ form.id_cat }}<br>
+
+    <h6>Добавить фото {{ form.image}}</h6>
+    <button class="btn btn-success" type="'submit">Добавить Статью</button>
+</form> -->
+
+<h3 class="display-3 h3create">Создание статьи</h3>
+
+<div class="form-group row" articleform" id="catdiv">
+    {% csrf_token %}
+    
+    <input id="articlename" type="text" name="articlename" class="articleforms" placeholder="Введите название статьи"><br>
+    <textarea id="articlecontent" rows="10" cols="10" name="articlecontent" class="articleforms articlecon" placeholder="Введите содержание статьи"></textarea><br>
+    <input id="photo" type="file" name="photo" class="articleforms articlephoto" multiple accept="image/*,image/jpeg">
+    <select id="catchoice" class="form-select form-select-sm choicearticle" >
+        <option hidden>Выберите категорию</option>
+    </select>
+    <button id="sendbutton" class="btn btn-outline-secondary btn-lg articlebutton" onclick="sendarticle()">Send</button>
+</div>
+    <!-- <input type="submit" class="btn btn-outline-secondary btn-lg articlebutton" name="send" value="Отправить"> -->
+
+<div class ="loginhome">
+    <a class="btn btn-outline-primary btn-lg" href="{% url 'index' %}" > Home</a>
+</div>
+<div id="sucalert" class="alert alert-success alert-dismissible" style="display:none; position:absolute;top:0;width: 100%;">
+    
+    <strong>Success!</strong> 
+</div>
+<div id="erralert" class="alert alert-danger alert-dismissible" style="display:none; position:absolute;top:0;width: 100%;">
+    
+    <strong>Error!</strong> 
+</div>
+<script>
+
+$( function() {
+
+    $.ajax({
+    type: 'GET',
+    url: 'api/v1/category/',
+    data: {
+    },
+    // success: function(data) {
+    //     for (var i=0; i <data.length;i++){
+
+    //     }
+    // },
+    success: function(data) {
+        for (var i=0; i <data.length;i++){
+            $('#catchoice').append('<option>'+data[i]['cat_name']+'</option>')
+        }
+             
+    },
+    error: function (error) {
+        // ошибка
+    },
+    
+    
+}); 
+} );
+    
+
+function sendarticle()  {
+
+
+        var data = new FormData();
+        data.append('file', $("#photo")[0].files[0]);
+        data.append('csrfmiddlewaretoken', '{{ csrf_token }}',)
+        data.append('title',$('#articlename').val())
+        data.append('content',$('#articlecontent').val())
+        data.append('choice',$('#catchoice').val())
+
+
+            $.ajax({
+                type: 'POST',
+                url: '{% url 'create' %}',
+                // dataType: 'json',
+                data: data,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    $('#sucalert').show()
+                    $('#sucalert').fadeOut(4000, function(){ $(this).remove();});
+                },
+                error: function(data) {
+                    $('#erralert').show()
+                    $('#erralert').fadeOut(4000, function(){ $(this).remove();});
+                }
+            }
+            
+            )
+                
+                
+        }
+        
+</script>
+{% endblock %}
+<!-- // data: {'csrfmiddlewaretoken': '{{ csrf_token }}','title':$('#articlename').val(),'content':$('#articlecontent').val(),'file':data,'choice':$('#catchoice').val()}, -->
+// var files;
+// $('input[type=file]').change(function(){
+// files = this.files;
+// console.log(files)
+// });
+
+// var dataURL = files[0].toDataURL('image/jpeg', 1.0)
+// var blob = dataURItoBlob(dataURL)
+// var formData = new FormData()
+// console.log(1,dataURL)
+// console.log(formData)
+// console.log(blob)
+// formData.append('access_token', token)
+// formData.append('source', blob)

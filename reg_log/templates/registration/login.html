@@ -1,0 +1,24 @@
+{% extends 'auth/base.html' %}
+{% block title %}
+
+{{title}}
+
+{% endblock %}
+{% block body %}
+
+
+
+<form method = "POST" class="form-group">
+    {% csrf_token %}
+    <table class="table">
+        {{form.as_p}}
+        <tr>
+            <td>&nbsp;</td>
+            <td> <input type="submit" value="ВОЙТИ"></td>
+        </tr>
+    </table>
+</form> 
+
+
+       
+{% endblock %}    

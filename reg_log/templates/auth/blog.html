@@ -1,0 +1,33 @@
+{% extends 'auth/base.html' %}
+{% block title %}
+{{title}}
+{% endblock %}
+{% block body %}
+
+<script>
+
+$( function() {
+
+$.ajax({
+type: 'GET',
+url: 'api/v1/article/',
+data: {
+},
+
+success: function(data) {
+    for (var i=0; i <data.length;i++){
+        $('#catchoice').append('<option>'+data[i]['cat_name']+'</option>')
+    }
+         
+},
+error: function (error) {
+    // ошибка
+},
+
+
+}); 
+} );
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% if flash %}
+{% for key,value in flash.items %}
+{% if key=="error" %}
+    {{key}} 
+{% endif %}
+{% endfor %}
+{% endif %}
+
+
+{% for el in articles %}
+    <div>
+        <h2>{{el.title}}</h2>
+        <p>{{el.content}}</p>
+        <p>{{el.image}}</p>
+        <p>{{el.creation_date}}</p>
+    </div>
+{% endfor %}
+ <!-- {% if flash %}
+    {% for key,value in flash.items %}
+    {% if key=="error" %}
+        {{key}} 
+    {% endif %}
+    {% endfor %}
+    {% endif %} -->
+    <!-- {% for dict_item in parent_dict %}
+    This example has {{dict_item['A']}} and {{dict_item['B']}}:
+    with the content --
+    {% for item in dict_item['content'] %}{{item[0]}} and {{item[1]}}{% endfor %}. -->
+<!-- {% endfor %}
+{% if flash %}
+    {% for key,value in flash.items() %}
+        {% if key=="sucess" %}   -->
+            <!-- {% for suc in sucess %} -->
+            <!-- <h3 class="alert alert-success">{{ value }}</h3> -->
+            <!-- {% endfor %} -->
+        <!-- {% endif %}
+    {% endfor %}
+{% endif %} -->
+<!-- {% if flash %}
+    {% for sucess flash.values %}
+        {% for suc in sucess %}
+            <h3 class="alert alert-danger">{{ suc }}</h3>
+        {% endfor %}
+    {% endfor %}
+{% endif %} -->
+{% if sucess %}
+    {% for value in sucess.values %}
+        {% for suc in value %}
+            <h3 class="registrationerror alert alert-danger">{{ suc }}</h3>
+        {% endfor %}
+    {% endfor %}
+{% endif %}}
